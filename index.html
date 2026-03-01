@@ -209,7 +209,7 @@
               </g>
             </svg>
           </div>
-          <div className="mt-1 flex items-center gap-1 px-2 py-0.5 rounded-full z-10 shadow-sm" style={{ backgroundColor: `${COLORS.buttonBg}`, borderWidth: '1px', borderColor: COLORS.cardBorder }}>
+          <div className="-mt-1 flex items-center gap-1 px-2 py-0.5 rounded-full z-10 shadow-sm" style={{ backgroundColor: `${COLORS.buttonBg}`, borderWidth: '1px', borderColor: COLORS.cardBorder }}>
             <span className="text-xs font-black" style={{ color: COLORS.textMain }}>{progress}%</span>
             <div className="w-1 h-1 rounded-full bg-[#CBAA96]"></div>
             <span className="text-[8px] font-bold text-gray-400 uppercase">{doneToday} / {todayTasksLength} งาน</span>
@@ -959,4 +959,5 @@
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
 
