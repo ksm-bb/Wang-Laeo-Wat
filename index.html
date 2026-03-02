@@ -102,13 +102,9 @@
     // ==========================================
     const DynamicBackground = React.memo(() => (
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Blob ซ้ายบน */}
         <div className="absolute top-[10%] left-[-10%] w-72 h-72 rounded-full blur-[90px] opacity-60 animate-float" style={{ backgroundColor: COLORS.blue }}></div>
-        {/* Blob ขวาล่าง */}
         <div className="absolute bottom-[10%] right-[-10%] w-80 h-80 rounded-full blur-[100px] opacity-50 animate-float-reverse" style={{ backgroundColor: COLORS.pink }}></div>
-        {/* Blob กลางขวา */}
         <div className="absolute top-[40%] right-[10%] w-48 h-48 rounded-full blur-[80px] opacity-60 animate-float" style={{ backgroundColor: COLORS.purple }}></div>
-        {/* ก้อนเมฆ */}
         <FluffyCloud top="8%" left="-5%" scale={1.5} opacity={0.6} delay="0s" />
         <FluffyCloud top="35%" left="-15%" scale={2.5} opacity={0.4} delay="2.5s" />
         <FluffyCloud bottom="20%" left="5%" scale={1.6} opacity={0.6} delay="3s" />
@@ -121,13 +117,11 @@
     // ==========================================
     const Header = React.memo(({ isAdmin, setIsAdmin, setShowAuthModal, handleImageUpload, profileImage }) => (
       <div className="px-5 pt-6 pb-2 relative z-10">
-        {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
         <div className="backdrop-blur-md rounded-[32px] p-4 shadow-xl shadow-[#FBB6C1]/20 flex items-center justify-between h-20 relative overflow-hidden group" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: `${COLORS.cardBorder}` }}>
           <div className="absolute left-6 top-1/2 -translate-y-1/2 w-24 h-8 bg-[#F4E39C]/60 blur-xl rounded-full"></div>
           <div className="flex flex-col justify-center ml-2 relative z-10">
             <div className="flex items-center gap-1">
              <h1 className="text-2xl font-black italic tracking-tighter flex">
-  {/* ✏️ [แก้ได้] เปลี่ยนชื่อแอปที่นี่ */}
   {"Wang Laeo Wat".split('').map((char, index) => (
     <span 
       key={index} 
@@ -151,7 +145,6 @@
             {profileImage ? (
               <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
             ) : (
-              // ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว
               <>
                 <div className="absolute inset-0 opacity-40" style={{ backgroundColor: COLORS.blue }}></div>
                 <span className="text-2xl relative z-10 select-none">🐰</span>
@@ -174,7 +167,6 @@
       });
 
       return (
-        // ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว
         <div onClick={triggerFlowerBounce} className={`backdrop-blur-sm rounded-[28px] p-3 flex flex-col items-center justify-center shadow-lg shadow-[#F7CBA8]/30 h-full relative overflow-hidden transition-all duration-300 cursor-pointer ${isBouncing ? 'scale-95' : 'hover:scale-[1.02]'}`} style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
           <div className="absolute top-2 left-3 text-[8px] font-black text-purpleDeep uppercase tracking-tighter opacity-70" style={{ color: COLORS.textMain }}>ความสำเร็จวันนี้</div>
           <div className="relative w-full h-20 flex items-center justify-center mt-2">
@@ -223,9 +215,7 @@
     // 📊 COMPONENT: CompactStats (สถิติ Next Queue + จำนวนคิว)
     // ==========================================
     const CompactStats = React.memo(({ isAdmin, selectedNextDate, nextQueueDate, handleSetManualDate, waitingCount }) => (
-      // ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว
       <div className="backdrop-blur-sm rounded-[28px] p-1 shadow-lg shadow-[#F7CBA8]/30 h-full flex overflow-hidden relative group transition-all" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
-          {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
           <div className={`flex-1 flex flex-col justify-center items-center p-2 relative rounded-l-[24px] transition-colors overflow-hidden ${isAdmin ? 'cursor-pointer' : ''}`} style={{ backgroundColor: '#e5cfc3' }}>
             {isAdmin && (
               <input type="date" className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" value={selectedNextDate || nextQueueDate} onChange={(e) => handleSetManualDate(e.target.value)} />
@@ -273,14 +263,12 @@
     const TaskCard = React.memo(({ task, isAdmin, onEdit, onToggleDoing, onToggleStatus }) => (
       <div onClick={() => isAdmin && onEdit(task)} className={`relative mb-2 rounded-[22px] p-3 transition-all shadow-sm group backdrop-blur-sm ${isAdmin ? 'active:scale-[0.97] cursor-pointer' : ''}`} 
         style={{ 
-  // ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว (Solid Color) สำหรับสถานะต่าง ๆ
-  backgroundColor: task.status === 'done' ? COLORS.cardBgDone : COLORS.cardWhite,
-  borderWidth: '2px',
-  borderStyle: 'solid',
-  // ยังคงสีขอบเพื่อบอกสถานะ 'doing'
-  borderColor: task.status === 'doing' ? COLORS.pink : (task.status === 'done' ? 'transparent' : COLORS.cardBorder), 
-  opacity: task.status === 'done' ? 0.7 : 1 
-}}
+          backgroundColor: task.status === 'done' ? COLORS.cardBgDone : COLORS.cardWhite,
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: task.status === 'doing' ? COLORS.pink : (task.status === 'done' ? 'transparent' : COLORS.cardBorder), 
+          opacity: task.status === 'done' ? 0.7 : 1 
+        }}
         >
         {task.status === 'doing' && (
            <div className="absolute inset-0 pointer-events-none z-0">
@@ -319,13 +307,11 @@
 
             {isAdmin ? (
               <div className="flex gap-1.5">
-                {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยวเมื่อกดเลือก 'doing' */}
                 <button onClick={(e) => onToggleDoing(e, task.id)} className={`relative w-[28px] h-[28px] rounded-[8px] flex items-center justify-center transition-all active:scale-90 shadow-sm`} style={{ color: task.status === 'doing' ? COLORS.textMain : '#B0BEC5', backgroundColor: task.status === 'doing' ? COLORS.pink : COLORS.buttonBg, borderWidth: '2px', borderColor: task.status === 'doing' ? COLORS.pink : COLORS.cardBorder }}>
                   <div className={`${task.status === 'doing' ? 'animate-spin-slow' : ''} flex items-center justify-center`}>
                     <IconLoader size={14} />
                   </div>
                 </button>
-                {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยวเมื่อกดเลือกเสร็จงาน */}
                 <button onClick={(e) => onToggleStatus(e, task.id)} className={`relative w-[28px] h-[28px] rounded-[8px] flex items-center justify-center transition-all active:scale-90 shadow-sm`} style={{ color: task.status === 'done' ? COLORS.textSoft : '#B0BEC5', backgroundColor: task.status === 'done' ? COLORS.blue : COLORS.buttonBg, borderWidth: '2px', borderColor: task.status === 'done' ? COLORS.blue : COLORS.cardBorder }}>
                   <IconCheck size={16} />
                 </button>
@@ -358,7 +344,6 @@
       const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       return (
-        // ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว
         <div className="backdrop-blur-xl rounded-[32px] p-5 shadow-[0_12px_30px_rgba(247,203,168,0.3)] mb-5 animate-fadeIn" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '4px', borderColor: COLORS.cardBorder }}>
           <div className="flex justify-between items-center mb-4 px-2">
             <button onClick={() => setCurrentMonth(new Date(year, month - 1, 1))} className="p-1.5 hover:bg-[#FCF3EC] rounded-full transition-colors text-[#CBAA96]"><IconChevronLeft size={20}/></button>
@@ -443,6 +428,13 @@
       const [selectedNextDate, setSelectedNextDate] = useState(''); 
       const [isBouncing, setIsBouncing] = useState(false); 
 
+      // ✨ State ใหม่สำหรับ Note และ Social Links
+      const [globalNote, setGlobalNote] = useState('');
+      const [isSavingNote, setIsSavingNote] = useState(false);
+      const [socialLinks, setSocialLinks] = useState({ facebook: '', line: '', tiktok: '' });
+      const [showSocialModal, setShowSocialModal] = useState(false);
+      const [tempSocialLinks, setTempSocialLinks] = useState({ facebook: '', line: '', tiktok: '' });
+
       // ==========================================
       // 🌐 API: ลิงก์ Google Apps Script Web App
       // ==========================================
@@ -476,6 +468,16 @@
               if (response.data.bannerImage) setBannerImage(response.data.bannerImage);
               if (response.data.bannerVisible !== undefined) setIsBannerVisible(response.data.bannerVisible);
               if (response.data.lockedNextDate) setSelectedNextDate(response.data.lockedNextDate);
+              
+              // ✨ นำข้อมูล Note และ Social Links มาเก็บไว้ใน State
+              if (response.data.globalNote !== undefined) setGlobalNote(response.data.globalNote);
+              if (response.data.linkFacebook !== undefined || response.data.linkLine !== undefined || response.data.linkTikTok !== undefined) {
+                  setSocialLinks({
+                      facebook: response.data.linkFacebook || '',
+                      line: response.data.linkLine || '',
+                      tiktok: response.data.linkTikTok || ''
+                  });
+              }
             }
             setIsLoading(false);
           })
@@ -484,6 +486,36 @@
             setIsLoading(false);
           });
       }, []);
+
+      // ✨ ฟังก์ชันจัดการ Note (เซฟอัตโนมัติเมื่อพิมพ์เสร็จและคลิกออก)
+      const handleNoteBlur = () => {
+          if (!isAdmin) return;
+          setIsSavingNote(true);
+          fetchAPI({ action: 'saveGlobalNote', note: globalNote })
+            .then(() => setIsSavingNote(false))
+            .catch(() => setIsSavingNote(false));
+      };
+
+      // ✨ ฟังก์ชันจัดการ Social Links
+      const handleSaveSocialLinks = (e) => {
+          e.preventDefault();
+          fetchAPI({ action: 'saveSocialLinks', links: tempSocialLinks }).then(res => {
+              if(res.status === 'success') {
+                  setSocialLinks(tempSocialLinks);
+                  setShowSocialModal(false);
+              }
+          });
+      };
+
+      const handleSocialClick = (platform) => {
+          if (isAdmin) {
+              setTempSocialLinks(socialLinks);
+              setShowSocialModal(true);
+          } else {
+              const url = socialLinks[platform];
+              if (url) window.open(url, '_blank');
+          }
+      };
 
       const handleAdminLogin = (e) => {
         e.preventDefault();
@@ -692,22 +724,35 @@
                   </div>
 
                   {/* ========================================== */}
-                  {/* ✨ NEW UI: Note & Social Buttons (UI Only) */}
+                  {/* ✨ NEW UI: Note & Social Buttons (Functional) */}
                   {/* ========================================== */}
                   <div className="flex gap-2 mb-4 h-[46px]">
-                    <div className="flex-1 backdrop-blur-sm rounded-[20px] px-4 flex items-center shadow-sm transition-all" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
-                      <input type="text" placeholder="Note..." className="w-full bg-transparent outline-none text-xs font-bold" style={{ color: COLORS.textMain }} />
+                    <div className="flex-1 backdrop-blur-sm rounded-[20px] px-4 flex items-center shadow-sm transition-all relative" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
+                      <input 
+                          type="text" 
+                          placeholder={isAdmin ? "เพิ่มโน้ต (บันทึกอัตโนมัติเมื่อพิมพ์เสร็จ)..." : "ไม่มีโน้ตเพิ่มเติม"} 
+                          className={`w-full bg-transparent outline-none text-xs font-bold ${!isAdmin ? 'opacity-80' : ''}`} 
+                          style={{ color: COLORS.textMain }}
+                          value={globalNote}
+                          onChange={(e) => setGlobalNote(e.target.value)}
+                          onBlur={handleNoteBlur}
+                          readOnly={!isAdmin}
+                      />
+                      {isSavingNote && <IconLoader size={14} className="absolute right-3 animate-spin-slow" style={{ color: COLORS.textSoft }} />}
                     </div>
-                    <div className="flex gap-1.5">
-                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#1877F2' }} title="Facebook">
+                    <div className="flex gap-1.5 relative group">
+                      <button onClick={() => handleSocialClick('facebook')} className={`w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform ${isAdmin || socialLinks.facebook ? 'active:scale-95 cursor-pointer' : 'opacity-40 cursor-default'}`} style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#1877F2' }} title="Facebook">
                         <IconFacebook size={20} />
                       </button>
-                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#00B900' }} title="LINE">
+                      <button onClick={() => handleSocialClick('line')} className={`w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform ${isAdmin || socialLinks.line ? 'active:scale-95 cursor-pointer' : 'opacity-40 cursor-default'}`} style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#00B900' }} title="LINE">
                         <IconLine size={20} />
                       </button>
-                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#000000' }} title="TikTok">
+                      <button onClick={() => handleSocialClick('tiktok')} className={`w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform ${isAdmin || socialLinks.tiktok ? 'active:scale-95 cursor-pointer' : 'opacity-40 cursor-default'}`} style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#000000' }} title="TikTok">
                         <IconTikTok size={18} />
                       </button>
+                      {isAdmin && (
+                          <div className="absolute -top-2.5 -right-2 px-1.5 py-0.5 rounded-md text-[8px] font-black uppercase tracking-wider shadow-sm pointer-events-none transition-opacity" style={{ backgroundColor: COLORS.pinkDeep, color: '#FFF' }}>Edit</div>
+                      )}
                     </div>
                   </div>
 
@@ -764,7 +809,6 @@
 
             {/* ===== Bottom Navigation Bar ===== */}
             <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[210px] z-50">
-              {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
               <div className="backdrop-blur-xl rounded-full h-14 shadow-2xl shadow-[#F7CBA8]/50 flex items-center justify-between px-6 relative" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
                   <button onClick={() => setView('dashboard')} className={`p-1 transition-all ${view === 'dashboard' ? 'scale-110' : 'text-gray-300 opacity-60'}`} style={{ color: view === 'dashboard' ? COLORS.textMain : '' }}>
                     <IconHome size={22} />
@@ -775,7 +819,6 @@
                   </button>
                   {isAdmin && (
                     <div className="absolute left-1/2 -translate-x-1/2 -top-6">
-                      {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
                       <button onClick={() => { setEditingTask(null); setShowModal(true); }} className="w-14 h-14 rounded-full text-white flex items-center justify-center shadow-xl shadow-[#FBB6C1]/40 active:scale-90 transition-transform" style={{ backgroundColor: COLORS.blue, borderWidth: '4px', borderColor: COLORS.cardWhite }}>
                         <IconPlus size={24} />
                       </button>
@@ -789,7 +832,6 @@
                 ========================================== */}
             {showModal && (
               <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/10 backdrop-blur-[2px] animate-fadeIn">
-                {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
                 <form onSubmit={handleSaveTask} className="backdrop-blur-xl w-full max-w-xs rounded-[35px] p-6 shadow-2xl animate-slideUp" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
                    <h3 className="text-sm font-black mb-4 text-center text-[#8C705F]">{editingTask ? 'แก้ไขคิวงาน ✨' : 'เพิ่มคิวใหม่ ✨'}</h3>
                    <div className="space-y-2 relative">
@@ -848,11 +890,37 @@
         )}
 
         {/* ==========================================
+            🪟 MODAL: ตั้งค่า Social Links (✨ ใหม่)
+            ========================================== */}
+        {showSocialModal && (
+          <div className="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-black/10 backdrop-blur-[2px] animate-fadeIn">
+            <form onSubmit={handleSaveSocialLinks} className="backdrop-blur-xl w-full max-w-xs rounded-[35px] p-6 shadow-2xl animate-slideUp" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
+               <h3 className="text-sm font-black mb-4 text-center text-[#8C705F]">ตั้งค่าลิงก์ช่องทางติดต่อ</h3>
+               <div className="space-y-3">
+                 <div className="flex items-center gap-2">
+                    <div className="w-8 flex justify-center"><IconFacebook size={24} className="text-[#1877F2]" /></div>
+                    <input type="url" value={tempSocialLinks.facebook} onChange={(e) => setTempSocialLinks({...tempSocialLinks, facebook: e.target.value})} className="w-full p-3 rounded-2xl border border-[#F7CBA8] outline-none text-[10px] shadow-sm focus:border-[#FBB6C1]" style={{ backgroundColor: COLORS.cardInner }} placeholder="วางลิงก์ Facebook..." />
+                 </div>
+                 <div className="flex items-center gap-2">
+                    <div className="w-8 flex justify-center"><IconLine size={24} className="text-[#00B900]" /></div>
+                    <input type="url" value={tempSocialLinks.line} onChange={(e) => setTempSocialLinks({...tempSocialLinks, line: e.target.value})} className="w-full p-3 rounded-2xl border border-[#F7CBA8] outline-none text-[10px] shadow-sm focus:border-[#FBB6C1]" style={{ backgroundColor: COLORS.cardInner }} placeholder="วางลิงก์ LINE..." />
+                 </div>
+                 <div className="flex items-center gap-2">
+                    <div className="w-8 flex justify-center"><IconTikTok size={24} className="text-[#000000]" /></div>
+                    <input type="url" value={tempSocialLinks.tiktok} onChange={(e) => setTempSocialLinks({...tempSocialLinks, tiktok: e.target.value})} className="w-full p-3 rounded-2xl border border-[#F7CBA8] outline-none text-[10px] shadow-sm focus:border-[#FBB6C1]" style={{ backgroundColor: COLORS.cardInner }} placeholder="วางลิงก์ TikTok..." />
+                 </div>
+                 <button type="submit" className="w-full py-3.5 rounded-2xl font-black text-xs mt-3 text-white shadow-lg active:scale-95 transition-all" style={{ backgroundColor: COLORS.textMain }}>บันทึกข้อมูล</button>
+                 <button type="button" onClick={() => setShowSocialModal(false)} className="w-full text-[9px] font-bold text-[#CBAA96] mt-1 uppercase tracking-widest hover:text-[#8C705F] transition-colors">Close</button>
+               </div>
+            </form>
+          </div>
+        )}
+
+        {/* ==========================================
             🔐 MODAL: Login Admin
             ========================================== */}
         {showAuthModal && (
           <div className="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-black/10 backdrop-blur-[2px] animate-fadeIn">
-            {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
             <form onSubmit={handleAdminLogin} className="backdrop-blur-xl w-full max-w-xs rounded-[35px] p-6 shadow-2xl animate-slideUp" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
                <h3 className="text-sm font-black mb-4 text-center text-[#8C705F]">เข้าสู่ระบบ Admin</h3>
                <div className="space-y-2">
@@ -872,7 +940,6 @@
             ========================================== */}
         {showImageModal && (
           <div className="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-black/10 backdrop-blur-[2px] animate-fadeIn">
-            {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
             <form onSubmit={(e) => { 
                 e.preventDefault(); 
                 if (tempImageUrl) { 
@@ -902,7 +969,6 @@
             ========================================== */}
         {showBannerModal && (
           <div className="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-black/10 backdrop-blur-[2px] animate-fadeIn">
-            {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
             <form onSubmit={(e) => { 
                 e.preventDefault(); 
                 if (tempBannerUrl) { 
@@ -933,7 +999,6 @@
             ========================================== */}
         {taskToDelete && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/20 backdrop-blur-[2px] animate-fadeIn">
-            {/* ⭐ เอาไล่สีออก ใช้สีพื้นหลังเดี่ยว */}
             <div className="backdrop-blur-xl w-full max-w-[260px] rounded-[30px] p-6 shadow-2xl animate-slideUp text-center" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
               <div className="w-14 h-14 rounded-full bg-[#FCF3EC] text-[#E098A5] flex items-center justify-center mx-auto mb-3 shadow-sm border border-[#FBB6C1]">
                  <IconTrash size={26} />
