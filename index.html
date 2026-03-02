@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <base target="_top">
@@ -10,11 +9,8 @@
   <link rel="shortcut icon" href="https://img2.pic.in.th/IMG_9584.md.png">
 
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -42,6 +38,11 @@
     const IconChevronLeft = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="15 18 9 12 15 6"></polyline></svg>;
     const IconChevronRight = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="9 18 15 12 9 6"></polyline></svg>;
     const IconTrash = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>;
+    
+    // เปลี่ยนเป็นลายเส้นง่ายๆ (Stroke Icons)
+    const IconFacebook = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>;
+    const IconLine = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>;
+    const IconTikTok = ({size=24, className=""}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>;
 
     // ==========================================
     // 🎨 ตัวแปรสีหลัก (COLORS Object) 
@@ -64,7 +65,7 @@
       cardBgDone: '#FCF3EC', // สีครีมเบจสำหรับงานที่เสร็จแล้ว
 
       // 🎨 สีขอบและ UI elements
-      cardWhite: '#FFFFFF',       
+      cardWhite: '#FFFFFF',        
       cardBorder: '#F7CBA8',      // ขอบสีส้มพีชอ่อนๆ
       cardInner: '#FFFFFF',       
       cloudWhite: '#FFFFFF',      
@@ -445,7 +446,7 @@
       // ==========================================
       // 🌐 API: ลิงก์ Google Apps Script Web App
       // ==========================================
-      const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzz0sPXZvhuYZcjJKNEyweWLBFfjyQlgIDi-SCPeNuTTMDPYgkN3pwrzN0abMfUJsEY/exec";
+      const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwg-RQo1qEtU_z2XaPMwHd4TsKd6tVd6PkXxW6bJ3vHe2k0LG8s6pWBJGW4XUWUsbCX/exec";
 
       const fetchAPI = async (payload) => {
         try {
@@ -689,6 +690,27 @@
                       <ProgressFlower progress={progress} todayTasksLength={todayTasks.length} doneToday={doneToday} triggerFlowerBounce={triggerFlowerBounce} isBouncing={isBouncing} />
                     </div>
                   </div>
+
+                  {/* ========================================== */}
+                  {/* ✨ NEW UI: Note & Social Buttons (UI Only) */}
+                  {/* ========================================== */}
+                  <div className="flex gap-2 mb-4 h-[46px]">
+                    <div className="flex-1 backdrop-blur-sm rounded-[20px] px-4 flex items-center shadow-sm transition-all" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder }}>
+                      <input type="text" placeholder="Note..." className="w-full bg-transparent outline-none text-xs font-bold" style={{ color: COLORS.textMain }} />
+                    </div>
+                    <div className="flex gap-1.5">
+                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#1877F2' }} title="Facebook">
+                        <IconFacebook size={20} />
+                      </button>
+                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#00B900' }} title="LINE">
+                        <IconLine size={20} />
+                      </button>
+                      <button className="w-[46px] h-[46px] flex items-center justify-center rounded-[18px] backdrop-blur-sm shadow-sm transition-transform active:scale-95" style={{ backgroundColor: COLORS.cardWhite, borderWidth: '2px', borderColor: COLORS.cardBorder, color: '#000000' }} title="TikTok">
+                        <IconTikTok size={18} />
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="flex items-center justify-between mb-2.5 ml-1">
                     <h2 className="text-[10px] font-black text-[#CBAA96] italic uppercase tracking-[0.3em] opacity-80">Today's Task</h2>
                     <div className="h-[2px] flex-1 bg-gradient-to-r from-[#F7CBA8] to-transparent mx-3 opacity-80"></div>
@@ -959,5 +981,3 @@
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-
